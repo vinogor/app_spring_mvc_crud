@@ -4,10 +4,7 @@ import crud.app.config.SpringConfig;
 import crud.app.service.TestBean;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-/**
- * Hello world!
- *
- */
+// больше не нужен
 public class App 
 {
     public static void main( String[] args )
