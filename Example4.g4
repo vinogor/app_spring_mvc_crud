@@ -3,30 +3,45 @@ grammar Example4;
 prog:
 //        stat
         oper
+        | LineComment
+        | EndOfLine
+
 ;
 
 
-oper: OPERATOR+;
+oper: operatorLine+;
 
-
-stat: LineStat+ ;
+//
+//stat: LineStat+ ;
 
 //OperStart       : '# ' [A-Z_]+  ;
 
 
 //Line          : (~('#')) (.)*? EndOfLine;
 //LineStat          :  ~('/' | '#') (.)*? EndOfLine;
-LineStat          :  [a-zA-Z_]*? EndOfLine;
+//LineStat          :  [a-zA-Z_]*? EndOfLine;
 //Line          :  [a-zA-Z_]*? EndOfLine;
 
 
 //LINE_COMMENT:   ('// ' (.)+? EndOfLine) -> skip;
 
+
+
+operatorLine    :   OperatorLineStart
+                    (Stat EndOfLine)*
+                    OperatorLineEnd
+                ;
+
+OperatorLineStart    :   '# ' OperatorStart [ A-Z_]+ EndOfLine;
+OperatorLineEnd      :      '# ' OperatorEnd [ A-Z_]+ EndOfLine;
+
+
+OperatorStart   :   'if' ;
+OperatorEnd     :   'endif';
+Stat            :   (.)+?    ;
+
+
 EndOfLine       : '\n' | EOF;
-
-
-OPERATOR:        '# ' [A-Z_]+ EndOfLine ;
-
 
 // все строки начинающиеся с '//' - выкидываем
 LineComment:

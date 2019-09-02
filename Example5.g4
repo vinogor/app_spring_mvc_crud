@@ -35,8 +35,8 @@ block :
      ;
 
 start : '#if ' inverse LettersUpCase '\n' ;
-    inverse: '!'?;
-    LettersUpCase         : [A-Z_]+ ;
+    inverse: '!'?   ;
+    LettersUpCase         : [A-Z_]+   ;
 
 
 body  :  ( comment

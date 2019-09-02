@@ -22,6 +22,8 @@ public class Main {
         ExpParser parser2 = new ExpParser(tokens2);
         System.out.println("Result: " + parser2.eval().value);
 
+        System.out.println(1 + 2 + 3 + "hi");
+        System.out.println("hi" + 1 + 2 + 3);
 
     }
 }
