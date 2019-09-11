@@ -13,13 +13,22 @@
     <#--        users - Это атрибут который придёт с модели -->
     <#list users as user>
         <tr>
-            <td> ${user.id} </td>
+            <td>
+                <a href="/user/${user.id}">
+                    ${user.id}
+                </a>
+            </td>
             <td> ${user.name} </td>
             <td> ${user.email} </td>
             <td> ${user.age} </td>
+
+            <td> <a href="/delete/${user.id}"> delete </a> </td>
+            <td> <a href="/update/${user.id}"> update </a> </td>
         </tr>
     </#list>
 </table>
+<br>
+<a href="/addUser"> Create user </a>
 
 </body>
 

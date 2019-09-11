@@ -1,11 +1,8 @@
 package crud.app.config;
 
-import crud.app.dao.UserDao;
-import crud.app.dao.UserDaoImpl;
 import crud.app.service.TestBean;
-import crud.app.service.UserService;
-import crud.app.service.UserServiceImpl;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -13,6 +10,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
+@ComponentScan(basePackages = {"crud.app.service", "crud.app.dao"}) // где поискать бины для создания
 public class SpringConfig {
 
     @Bean // по дефолту это Синглетон
@@ -36,13 +34,13 @@ public class SpringConfig {
         return dataSource;
     }
 
-    @Bean
-    public UserDao getUserDao() {
-        return new UserDaoImpl();
-    }
+//    @Bean
+//    public UserDao getUserDao() {
+//        return new UserDaoImpl();
+//    }
 
-    @Bean
-    public UserService getUserService() {
-        return new UserServiceImpl();
-    }
+//    @Bean
+//    public UserService getUserService() {
+//        return new UserServiceImpl();
+//    }
 }
